@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install apache httpd
+      ansible.builtin.apt:
+              name: apache2
+              state: present
+              update_cache: yes
+    - name: copy file with owner and permissions
+      ansible.builtin.copy:
+              src: /home/linuxuser/index.html
+              dest: /var/www/html
+              owner: root
+              group: root
+              mode: '0644'

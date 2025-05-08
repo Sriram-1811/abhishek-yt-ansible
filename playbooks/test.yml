@@ -1,0 +1,5 @@
+- name: Test playbook
+  hosts: all
+  tasks:
+    - name: Ping all hosts
+      ansible.builtin.ping:
