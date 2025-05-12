@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+          - name: Create ec2 instance
+            amazon.aws.ec2_instance:
+                    name: "{{ item.name }}"
+                    key_name: "sriram-aws-keypair"
+                    instance_type: t2.micro
+                    security_group: default
+                    region: ap-south-1
+                    aws_access_key: "{{ec2_access_key}}" #from vault as defined
+                    aws_secret_key: "{{ec2_secret_key}}" #from vault as defined
+                    network:
+                            assign_public_ip: true
+                    image_id: "{{ item.naem }}"
+                    tags:
+                            environment: "{{ item.name }}"
+            loop:
+                    - { image: "ami-0e1d06225679bc1c5", name: "manage-node-1" } # Update AMI ID according    # azure linux
+                    - { image: "ami-0f58b397bc5c1f2e8", name: "manage-node-2" } # to my account              # 2 are ubuntu      
+                    - { image: "ami-0f58b397bc5c1f2e8", name: "manage-node-3" }
