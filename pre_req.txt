@@ -1,0 +1,14 @@
+/usr/bin/python3.12 -m pip install --user boto3 botocore
+# This ensures that boto3 and botocore are available in Python 3.12, which is what Ansible is using due to your ansible_python_interpreter=/usr/bin/python3.12 setting.
+
+#if it don't work then install manually.
+1.
+curl -O https://bootstrap.pypa.io/get-pip.py
+/usr/bin/python3.12 get-pip.py --user
+
+This will install pip for Python 3.12 in your user environment.
+
+then rerun this command
+/usr/bin/python3.12 -m pip install --user boto3 botocore
+
+this is for aws api
