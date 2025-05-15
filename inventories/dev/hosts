@@ -1,2 +1,5 @@
 [ub_servers]
 172.23.0.5 ansible_host=172.23.0.5 ansible_user=ubuntu_user
+
+[windows]
+sriram ansible_host=172.23.0.6 ansible_user=sriram ansible_password=Welcome@1234 ansible_connection=winrm ansible_winrm_transport=basic ansible_port=5985 ansible_winrm_server_cert_validation=ignore ansible_become=false
